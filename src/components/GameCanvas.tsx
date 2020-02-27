@@ -52,7 +52,7 @@ function Icosahedron({
     geometryRef.current.colorsNeedUpdate = true;
   }, [geometryRef, faceStates]);
 
-  const [isMoved, setIsMoved] = useState(false);
+  const [firstMoved, setFirstMoved] = useState(0);
 
   return (
     <>
@@ -67,10 +67,14 @@ function Icosahedron({
         />
       </mesh>
       <mesh
-        onPointerMove={() => setIsMoved(true)}
-        onPointerDown={() => setIsMoved(false)}
+        onPointerDown={() => {
+          setFirstMoved(Date.now());
+        }}
         onClick={({ face }) => {
-          if (!geometryRef.current || isMoved) {
+          if (
+            !geometryRef.current ||
+            (firstMoved && Date.now() - firstMoved > 200)
+          ) {
             return;
           }
 

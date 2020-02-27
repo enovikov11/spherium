@@ -11,7 +11,7 @@ import "./index.css";
 const store = createStore(reducer, composeWithDevTools());
 
 // TODO: поддержка мобильных
-// FIXME: заполнить манифест, поддержать standalone
+// FIXME: заполнить манифест, поддержать standalone(проверить что работает без сети)
 // TODO: [EPIC] написать автотесты
 // TODO: [EPIC] поддержать сетевую игру
 // TODO: [EPIC] добавить обучение
